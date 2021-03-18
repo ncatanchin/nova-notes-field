@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Catanchin\\NovaNotesField\\FieldServiceProvider"
+                "Catanchin\\NovaNotesField\\NotesFieldServiceProvider"
             ]
         }
     },
