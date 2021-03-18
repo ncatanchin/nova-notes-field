@@ -2,7 +2,7 @@
 
 namespace Catanchin\NovaNotesField\Traits;
 
-use Catanchin\NovaNotesField\FieldServiceProvider;
+use Catanchin\NovaNotesField\NotesFieldServiceProvider;
 
 trait HasNotes
 {
@@ -18,18 +18,9 @@ trait HasNotes
     {
         $user = $user ? auth()->user() : null;
 
-        /*
-        return $this->notes()->create([
-            'text' => $note,
-            'created_by' => isset($user) ? $user->id : null,
-            'system' => $system,
-        ]);
-        */
-
         return $this->notes()->create([
             'comment' => $note,
             'user_id' => isset($user) ? $user->id : null,
-            // 'system' => $system,
         ]);
 
     }
@@ -47,6 +38,6 @@ trait HasNotes
 
     public function notes()
     {
-        return $this->morphMany(FieldServiceProvider::getNotesModel(), 'commentable');
+        return $this->morphMany(NotesFieldServiceProvider::getNotesModel(), 'commentable');
     }
 }

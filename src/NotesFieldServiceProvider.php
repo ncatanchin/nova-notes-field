@@ -8,17 +8,20 @@ use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 use OptimistDigital\NovaTranslationsLoader\LoadsNovaTranslations;
 
-class FieldServiceProvider extends ServiceProvider
+class NotesFieldServiceProvider extends ServiceProvider
 {
     use LoadsNovaTranslations;
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
+        // Load migrations
+        $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+
+        // Publish migrations
+        $this->publishes([
+            __DIR__ . '/../migrations' => database_path('migrations'),
+        ], 'migrations');
+
         // Config
         $this->publishes([
             __DIR__ . '/../config/nova-notes-field.php' => config_path('nova-notes-field.php'),
@@ -48,13 +51,13 @@ class FieldServiceProvider extends ServiceProvider
             ->group(__DIR__ . '/../routes/api.php');
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    public static function getTableName()
     {
-        //
+        return config('nova-notes-field.table_name', 'notes');
+    }
+
+    public static function getNotesModel()
+    {
+        return config('nova-notes-field.notes_model', \Catanchin\NovaNotesField\Models\Note::class);
     }
 }

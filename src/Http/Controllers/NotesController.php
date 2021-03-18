@@ -19,7 +19,6 @@ class NotesController extends Controller
 
         $model = $validationResult['model'];
         $displayOrder = config('nova-notes-field.display_order', 'DESC');
-        // $notes = $model->notes()->orderBy('created_at', $displayOrder)->orderBy('id', $displayOrder)->get();
         $notes = $model->notes()->orderBy('created_at', $displayOrder)->orderBy('id', $displayOrder)->get();
 
         return response()->json([

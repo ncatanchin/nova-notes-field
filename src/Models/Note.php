@@ -5,39 +5,36 @@ namespace Catanchin\NovaNotesField\Models;
 use Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
-use Catanchin\NovaNotesField\FieldServiceProvider;
+use Catanchin\NovaNotesField\NotesFieldServiceProvider;
 
 class Note extends Model
 {
     protected $table = 'notes';
 
-    protected $casts = [
-        // 'system' => 'bool',
-    ];
-
     protected $fillable = [
-        'commentable_type',
-        'created_by',
-        'id',
         'comment',
+        'commentable_id',
+        'commentable_type',
         'user_id'.
-        // 'system'
-        // 'text',
     ];
 
-    protected $hidden = ['commentable_type', 'commentable_id'];
+    protected $hidden = [
+        'commentable_id',
+        'commentable_type',
+    ];
 
     protected $appends = [
-        'text',
+        'can_delete',
         'created_by_avatar_url',
         'created_by_name',
-        'can_delete',
+        // @todo: follow-up, is it depending on this?
+        'text',
     ];
 
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->setTable(FieldServiceProvider::getTableName());
+        $this->setTable(NotesFieldServiceProvider::getTableName());
     }
 
     public function commentable()
@@ -45,11 +42,11 @@ class Note extends Model
         return $this->morphTo();
     }
 
+    // @note: alias
     public function notable()
     {
         return $this->morphTo();
     }
-
 
     public function createdBy()
     {
