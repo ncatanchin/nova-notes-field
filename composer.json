@@ -11,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatialmedia\\NovaNotesField\\": "src/"
+            "Catanchin\\NovaNotesField\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Spatialmedia\\NovaNotesField\\FieldServiceProvider"
+                "Catanchin\\NovaNotesField\\FieldServiceProvider"
             ]
         }
     },

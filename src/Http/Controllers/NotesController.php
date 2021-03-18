@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatialmedia\NovaNotesField\Http\Controllers;
+namespace Catanchin\NovaNotesField\Http\Controllers;
 
 use Laravel\Nova\Nova;
 use Illuminate\Http\Request;

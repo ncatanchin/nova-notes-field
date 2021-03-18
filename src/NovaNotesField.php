@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatialmedia\NovaNotesField;
+namespace Catanchin\NovaNotesField;
 
 use Laravel\Nova\Fields\Field;
 

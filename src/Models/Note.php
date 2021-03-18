@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatialmedia\NovaNotesField\Models;
+namespace Catanchin\NovaNotesField\Models;
 
 use Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
-use Spatialmedia\NovaNotesField\FieldServiceProvider;
+use Catanchin\NovaNotesField\FieldServiceProvider;
 
 class Note extends Model
 {

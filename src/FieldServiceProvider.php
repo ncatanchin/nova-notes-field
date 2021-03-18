@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatialmedia\NovaNotesField;
+namespace Catanchin\NovaNotesField;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;

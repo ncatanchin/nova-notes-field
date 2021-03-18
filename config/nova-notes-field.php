@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'notes_model' => \Spatialmedia\NovaNotesField\Models\Note::class,
+    'notes_model' => \Catanchin\NovaNotesField\Models\Note::class,
 
 
     /*
