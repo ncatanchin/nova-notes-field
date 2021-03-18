@@ -25,23 +25,24 @@ return [
 
     'notes_model' => \Catanchin\NovaNotesField\Models\Note::class,
 
-
     /*
     |--------------------------------------------------------------------------
     | Avatar URL
     |--------------------------------------------------------------------------
     |
-    | Callable which allows you to generate your own URL for the user. The
-    | input parameter is the user model. By default, Gravatar is used
-    | for the user's avatars.
+    | Callable or the model attribute that accesses the avatar URL.
     |
     | For example:
-    | 'get_avatar_url' => fn ($user) => $user->getAvatarUrl(),
+    | 'get_avatar_url' => fn($user) => $user->getAvatarUrl();
+    | // or
+    | 'get_avatar_url' => 'avatarUrl'
+    |
+    | This assumes that you have the following on your User model:
+    | public function getAvatarUrlAttribute() {}
     |
     */
 
     'get_avatar_url' => null,
-
 
     /*
     |--------------------------------------------------------------------------
