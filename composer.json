@@ -1,5 +1,5 @@
 {
-    "name": "spatialmedia/nova-notes-field",
+    "name": "ncatanchin/nova-notes-field",
     "description": "A Laravel Nova field.",
     "keywords": [
         "laravel",
