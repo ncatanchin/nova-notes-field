@@ -71,6 +71,7 @@ class NotesController extends Controller
         $resourceName = $request->get('resourceName');
 
         $errors = [];
+
         if (empty($resourceId)) $errors['resourceId'] = 'required';
         if (empty($resourceName)) $errors['resourceName'] = 'required';
 
@@ -79,7 +80,7 @@ class NotesController extends Controller
             if (empty($resourceClass)) $errors['resourceName'] = 'invalid_name';
             else {
                 $modelClass = $resourceClass::$model;
-                $model = $modelClass::find($resourceId);
+                $model = $modelClass::withTrashed()->find($resourceId);
                 if (empty($model)) $errors['resourceId'] = 'not_found';
             }
         }

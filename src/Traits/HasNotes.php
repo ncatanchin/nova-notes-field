@@ -11,10 +11,9 @@ trait HasNotes
      *
      * @param string $note The note text which can contain raw HTML.
      * @param bool $user Enables or disables the use of `Auth::user()` to set as the creator.
-     * @param bool $system Defines whether the note is system created and can be deleted or not.
      * @return \Catanchin\NovaNotesField\Models\Note
      **/
-    public function addNote($note, $user = true, $system = true)
+    public function addNote(string $note, $user = true)
     {
         $user = $user ? auth()->user() : null;
 
@@ -33,7 +32,7 @@ trait HasNotes
      **/
     public function deleteNote($noteId)
     {
-        $this->comments()->where('id', '=', $noteId)->delete();
+        $this->comments()->where('id', $noteId)->delete();
     }
 
     public function notes()
